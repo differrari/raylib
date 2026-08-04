@@ -355,7 +355,7 @@ void DisableCursor(void)
 void SwapScreenBuffer(void)
 {
     // Update framebuffer
-    rlCopyFramebuffer(0, 0, CORE.Window.render.width, CORE.Window.render.height, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8, platform.pixels);
+    rlCopyFramebuffer(0, 0, CORE.Window.render.width, CORE.Window.render.height, PIXELFORMAT_UNCOMPRESSED_B8G8R8A8, platform.pixels);
 }
 
 //----------------------------------------------------------------------------------

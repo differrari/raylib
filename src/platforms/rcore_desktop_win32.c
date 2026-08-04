@@ -1212,7 +1212,7 @@ void SwapScreenBuffer(void)
 
 #if defined(GRAPHICS_API_OPENGL_11_SOFTWARE)
     // Update framebuffer
-    rlCopyFramebuffer(0, 0, CORE.Window.render.width, CORE.Window.render.height, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8, platform.pixels);
+    rlCopyFramebuffer(0, 0, CORE.Window.render.width, CORE.Window.render.height, PIXELFORMAT_UNCOMPRESSED_B8G8R8A8, platform.pixels);
 
     // Force redraw
     InvalidateRect(platform.hwnd, NULL, FALSE);

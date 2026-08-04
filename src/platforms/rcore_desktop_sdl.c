@@ -757,6 +757,12 @@ void SetWindowIcon(Image image)
             bmask = 0x0000FF00, amask = 0x000000FF;
             depth = 32, pitch = image.width*4;
         } break;
+        case PIXELFORMAT_UNCOMPRESSED_B8G8R8A8:
+        {
+            rmask = 0x0000FF00, gmask = 0x00FF0000;
+            bmask = 0xFF000000, amask = 0x000000FF;
+            depth = 32, pitch = image.width*4;
+        } break;
         case PIXELFORMAT_UNCOMPRESSED_R32:
         {
             rmask = 0xFFFFFFFF, gmask = 0;
@@ -1256,7 +1262,7 @@ void SwapScreenBuffer(void)
 #if defined(GRAPHICS_API_OPENGL_11_SOFTWARE)
     // NOTE: We use a preprocessor condition here because `rlCopyFramebuffer` is only declared for software rendering
     SDL_Surface *surface = SDL_GetWindowSurface(platform.window);
-    rlCopyFramebuffer(0, 0, CORE.Window.render.width, CORE.Window.render.height, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8, surface->pixels);
+    rlCopyFramebuffer(0, 0, CORE.Window.render.width, CORE.Window.render.height, PIXELFORMAT_UNCOMPRESSED_B8G8R8A8, surface->pixels);
     SDL_UpdateWindowSurface(platform.window);
 #else
     SDL_GL_SwapWindow(platform.window);

@@ -806,6 +806,7 @@ typedef enum {
     SW_PIXELFORMAT_UNCOMPRESSED_R5G5B5A1,          // 16 bpp (1 bit alpha)
     SW_PIXELFORMAT_UNCOMPRESSED_R4G4B4A4,          // 16 bpp (4 bit alpha)
     SW_PIXELFORMAT_UNCOMPRESSED_R8G8B8A8,          // 32 bpp
+    SW_PIXELFORMAT_UNCOMPRESSED_B8G8R8A8,          // 32 bpp
     SW_PIXELFORMAT_UNCOMPRESSED_R32,               // 32 bpp (1 channel - float)
     SW_PIXELFORMAT_UNCOMPRESSED_R32G32B32,         // 32*3 bpp (3 channels - float)
     SW_PIXELFORMAT_UNCOMPRESSED_R32G32B32A32,      // 32*4 bpp (4 channels - float)
@@ -1826,6 +1827,15 @@ static inline void sw_get_pixel(uint8_t *color, const void *pixels, uint32_t off
             color[0] = src[0];
             color[1] = src[1];
             color[2] = src[2];
+            color[3] = src[3];
+            break;
+        }
+        case SW_PIXELFORMAT_UNCOMPRESSED_B8G8R8A8:
+        {
+            const uint8_t *src = &((const uint8_t*)pixels)[offset*4];
+            color[0] = src[2];
+            color[1] = src[1];
+            color[2] = src[0];
             color[3] = src[3];
             break;
         }

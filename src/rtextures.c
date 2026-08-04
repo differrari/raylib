@@ -5367,6 +5367,7 @@ int GetPixelDataSize(int width, int height, int format)
         case PIXELFORMAT_UNCOMPRESSED_R5G6B5:
         case PIXELFORMAT_UNCOMPRESSED_R5G5B5A1:
         case PIXELFORMAT_UNCOMPRESSED_R4G4B4A4: bpp = 16; break;
+        case PIXELFORMAT_UNCOMPRESSED_B8G8R8A8:
         case PIXELFORMAT_UNCOMPRESSED_R8G8B8A8: bpp = 32; break;
         case PIXELFORMAT_UNCOMPRESSED_R8G8B8: bpp = 24; break;
         case PIXELFORMAT_UNCOMPRESSED_R32: bpp = 32; break;
@@ -5512,6 +5513,15 @@ static Vector4 *LoadImageDataNormalized(Image image)
                     pixels[i].x = (float)((unsigned char *)image.data)[k]/255.0f;
                     pixels[i].y = (float)((unsigned char *)image.data)[k + 1]/255.0f;
                     pixels[i].z = (float)((unsigned char *)image.data)[k + 2]/255.0f;
+                    pixels[i].w = (float)((unsigned char *)image.data)[k + 3]/255.0f;
+
+                    k += 4;
+                } break;
+                case PIXELFORMAT_UNCOMPRESSED_B8G8R8A8:
+                {
+                    pixels[i].x = (float)((unsigned char *)image.data)[k + 2]/255.0f;
+                    pixels[i].y = (float)((unsigned char *)image.data)[k + 1]/255.0f;
+                    pixels[i].z = (float)((unsigned char *)image.data)[k + 0]/255.0f;
                     pixels[i].w = (float)((unsigned char *)image.data)[k + 3]/255.0f;
 
                     k += 4;
