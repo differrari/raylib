@@ -1,0 +1,8 @@
+src/rcore.c
+src/rglfw.c
+src/rshapes.c
+src/rtextures.c
+src/rtext.c
+src/utils.c
+src/rmodels.c
+src/raudio.c
